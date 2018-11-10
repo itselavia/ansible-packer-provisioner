@@ -1,0 +1,13 @@
+- name: Install Apache Ambari agent
+  become: yes
+  yum:
+    name: ambari-agent
+    state: present
+    update_cache: yes
+
+- name: create symlink
+  become: yes
+  file:
+    src: /usr/share/java/mysql-connector-java.jar
+    dest: /var/lib/ambari-agent/tmp/mysql-connector-java.jar
+    state: link
