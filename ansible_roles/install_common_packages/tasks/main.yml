@@ -1,0 +1,14 @@
+- name: install common yum packages
+  become: yes
+  yum:
+    name:
+      - wget
+      - git
+      - unzip
+      - dos2unix
+      - iproute
+      - which
+      - bind-utils
+      - telnet
+    state: present
+    
