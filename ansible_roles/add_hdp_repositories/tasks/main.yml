@@ -1,0 +1,30 @@
+- name: Add public Ambari repository
+  become: yes
+  yum_repository:
+    name: ambari
+    description: Apache Ambari YUM repo
+    baseurl: http://public-repo-1.hortonworks.com/ambari/centos7/2.x/updates/2.6.2.2
+
+- name: Add public HDP repository
+  become: yes
+  yum_repository:
+    name: hdp
+    description: HDP YUM repo
+    baseurl: http://public-repo-1.hortonworks.com/HDP/centos7/2.x/updates/2.6.5.0
+
+- name: Add the Ambari Repo RPM Key
+  become: yes
+  rpm_key:
+    state: present
+    key: http://public-repo-1.hortonworks.com/ambari/centos7/2.x/updates/2.6.2.2/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+
+- name: Add the HDP Repo RPM Key
+  become: yes
+  rpm_key:
+    state: present
+    key: http://public-repo-1.hortonworks.com/HDP/centos7/2.x/updates/2.6.5.0/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+
+
+- name: Enable rhui-REGION-rhel-server-optional
+  become: yes
+  command: yum-config-manager --enable rhui-REGION-rhel-server-optional
