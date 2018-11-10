@@ -1,0 +1,7 @@
+- name: copy selinux config file to /etc/selinux/config
+  become: yes
+  copy:
+    src: config
+    dest: /etc/selinux/config
+    owner: root
+    mode: 0644
