@@ -31,7 +31,7 @@
         {
             "type": "ansible",
             "playbook_file": "./node.yml",
-            "ansible_env_vars": [ "ANSIBLE_ROLES_PATH=/home/ec2-user/golden-amis/ansible_roles" ]
+            "ansible_env_vars": [ "ANSIBLE_ROLES_PATH=/home/ubuntu/golden-amis/ansible_roles" ]
         }
     ]
  }
