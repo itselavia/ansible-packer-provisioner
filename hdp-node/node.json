@@ -11,7 +11,7 @@
           "source_ami_filter":{
              "filters":{
                 "virtualization-type":"hvm",
-                "name":"Red Hat Enterprise Linux 7.5*",
+                "name":"RHEL-7.5_HVM_GA*",
                 "root-device-type":"ebs"
              },
              "owners":[
