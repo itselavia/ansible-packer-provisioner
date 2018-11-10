@@ -1,0 +1,13 @@
+- name: download the jq binary
+  become: yes
+  get_url:
+    url: https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
+    dest: /usr/bin/
+    remote_src: yes
+    group: ec2-user
+    owner: ec2-user
+    mode: 0777
+
+- name: Rename the jq binary
+  become: yes
+  command: mv /usr/bin/jq-linux64 /usr/bin/jq
