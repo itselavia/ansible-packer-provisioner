@@ -30,7 +30,7 @@
         {
             "type": "ansible",
             "playbook_file": "./bastion.yml",
-            "ansible_env_vars": [ "ANSIBLE_ROLES_PATH=/home/ubuntu/golden-amis/ansible_roles" ]
+            "ansible_env_vars": [ "ANSIBLE_ROLES_PATH=../ansible_roles" ]
         }
     ]
  }
