@@ -1,0 +1,36 @@
+{
+    "builders":[
+       {
+          "type":"amazon-ebs",
+          "associate_public_ip_address":true,
+          "force_deregister":true,
+          "force_delete_snapshot":true,
+          "ami_name":"bastion-built-by-ansible",
+          "ami_description":"bastion-built-by-ansible",
+          "ami_virtualization_type":"hvm",
+          "source_ami_filter":{
+             "filters":{
+                "virtualization-type":"hvm",
+                "name":"amzn2-ami-hvm-2.0*",
+                "root-device-type":"ebs"
+             },
+             "owners":[
+                "137112412989"
+             ],
+             "most_recent":true
+          },
+          "instance_type":"t2.micro",
+          "ssh_username":"ec2-user",
+          "tags":{
+             "Name":"bastion-built-by-ansible"
+          }
+       }
+    ],
+    "provisioners":[
+        {
+            "type": "ansible",
+            "playbook_file": "./bastion.yml",
+            "ansible_env_vars": [ "ANSIBLE_ROLES_PATH=/home/ec2-user/golden-amis/ansible_roles" ]
+        }
+    ]
+ }
