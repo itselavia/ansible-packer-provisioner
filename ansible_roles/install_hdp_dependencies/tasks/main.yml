@@ -1,0 +1,11 @@
+- name: install hdp dependencies via yum
+  become: yes
+  yum:
+    name:
+      - libtirpc-devel
+      - ipa-client
+      - openldap-clients
+      - mysql
+      - mysql-connector-java
+    state: present
+    
