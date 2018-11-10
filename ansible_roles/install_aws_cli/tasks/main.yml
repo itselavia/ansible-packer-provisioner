@@ -1,0 +1,31 @@
+- name: download and unzip aws cli bundle zip file
+  unarchive:
+    src: https://s3.amazonaws.com/aws-cli/awscli-bundle.zip
+    dest: /tmp/
+    remote_src: yes
+
+- name: install the aws cli bundle
+  become: yes
+  command: /tmp/awscli-bundle/install -i /usr/aws -b /usr/bin/aws
+
+- name: change ownership of installed aws cli bundle to ec2-user (/usr/aws)
+  become: yes
+  file:
+    path: /usr/aws
+    recurse: yes
+    state: directory
+    owner: ec2-user
+    group: ec2-user
+
+- name: change ownership of installed aws cli bundle to ec2-user (/usr/bin/aws)
+  become: yes
+  file:
+    path: /usr/bin/aws
+    owner: ec2-user
+    group: ec2-user
+
+- name: delete the aws cli source bundle directory
+  file:
+    path: /tmp/awscli-bundle
+    state: absent
+    
