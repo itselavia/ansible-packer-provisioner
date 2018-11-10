@@ -1,0 +1,20 @@
+- name: install ntp package
+  become: yes
+  yum:
+    name: ntp
+    state: present
+
+- name: copy ntp.conf file to /etc/ntp.conf
+  become: yes
+  copy:
+    src: ntp.conf
+    dest: /etc/ntp.conf
+    owner: root
+    mode: 0644
+
+- name: restart the ntp service
+  become: yes
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: ntpd
