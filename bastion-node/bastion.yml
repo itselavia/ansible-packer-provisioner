@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: no
+  roles:
+    - update_yum_packages
+    - install_common_packages
+    - install_and_configure_ntp
+    - install_aws_cli
+    - install_jq
+    - disable_selinux
